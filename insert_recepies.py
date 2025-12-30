@@ -82,18 +82,20 @@ def parse_and_insert():
         total_time = recipe.get('total_time')
         if isinstance(total_time, float) and math.isnan(total_time):
             total_time = None
-        
-        # --- FIX: Clean the calories data before insert ---
-        nutrients = recipe['nutrients']
-        if 'calories' in nutrients and isinstance(nutrients['calories'], str):
-            # Use regex to strip anything that is not a digit or a decimal point
-            cleaned_calories = re.sub(r'[^0-9\.]', '', nutrients['calories'])
-            try:
-                # Convert the cleaned string to a float
-                nutrients['calories'] = float(cleaned_calories) if cleaned_calories else None
-            except ValueError:
-                nutrients['calories'] = None # Handle edge cases
-        # --- End of Fix ---
+
+
+        nutrients = recipe.get('nutrients')
+
+if nutrients and isinstance(nutrients, dict) and isinstance(nutrients.get('calories'), str):
+    cleaned_calories = re.sub(r'[^0-9\.]', '', nutrients['calories'])
+    try:
+        nutrients['calories'] = float(cleaned_calories) if cleaned_calories else None
+    except ValueError:
+        nutrients['calories'] = None
+else:
+    nutrients = None
+
+
 
         db_recipe = Recipe(
             cuisine=recipe['cuisine'],
