@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes finder App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-utensils"></i> Securin Recipes</h1>
+    </header>
+    
+    <!-- Filters Section -->
+    <div id="filters">
+        <div class="filter-group">
+            <i class="fas fa-fire"></i>
+            <input type="text" id="calories" placeholder="Calories (e.g., <=400)">
+        </div>
+        <div class="filter-group">
+            <i class="fas fa-search"></i>
+            <input type="text" id="title" placeholder="Title">
+        </div>
+        <div class="filter-group">
+            <i class="fas fa-globe"></i>
+            <input type="text" id="cuisine" placeholder="Cuisine">
+        </div>
+        <div class="filter-group">
+            <i class="fas fa-clock"></i>
+            <input type="text" id="total_time" placeholder="Total Time (e.g., >=100)">
+        </div>
+        <div class="filter-group">
+            <i class="fas fa-star"></i>
+            <input type="text" id="rating" placeholder="Rating (e.g., >=4.5)">
+        </div>
+        <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+        <button id="clear-btn"><i class="fas fa-times"></i> Clear</button>
+    </div>
+    
+    <!-- Table Container for Responsiveness -->
+    <div id="table-container">
+        <table id="recipes-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Cuisine</th>
+                    <th>Rating</th>
+                    <th>Total Time</th>
+                    <th>Serves</th>
+                </tr>
+            </thead>
+            <!-- Recipes Container (for Card Layout) -->
+<div id="recipes-container">
+    <!-- Cards will be inserted here -->
+</div>
+            <tbody id="table-body">
+                <!-- Rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Pagination -->
+    <div id="pagination">
+        <button id="prev-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-btn">Next <i class="fas fa-chevron-right"></i></button>
+        <select id="limit-select">
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+        </select>
+    </div>
+    
+    <!-- Fallback Messages -->
+    <div id="no-data" style="display: none;"><i class="fas fa-exclamation-triangle"></i> No recipes found. Try adjusting your filters.</div>
+    <div id="no-results" style="display: none;"><i class="fas fa-exclamation-circle"></i> No data available. Please check the backend.</div>
+    
+    <!-- Drawer Overlay -->
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+    
+    <!-- Drawer for Details -->
+    <div id="drawer" class="drawer">
+        <div class="drawer-content">
+            <button id="close-drawer"><i class="fas fa-times"></i></button>
+            <h2 id="drawer-title"></h2>
+            <p id="drawer-description"></p>
+            <p id="drawer-total-time">Total Time: <span id="total-time-value"></span> <button id="expand-times"><i class="fas fa-chevron-down"></i></button></p>
+            <div id="expanded-times" style="display: none;">
+                <p>Cook Time: <span id="cook-time-value"></span></p>
+                <p>Prep Time: <span id="prep-time-value"></span></p>
+            </div>
+            <h3><i class="fas fa-chart-bar"></i> Nutrition</h3>
+            <table id="nutrition-table">
+                <tbody>
+                    <!-- Nutrition rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Recipes Container (for Card Layout) -->
+    <script src="script.js"></script>
+</body>
+</html>
