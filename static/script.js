@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:8000/api/recipes';
+const API_BASE = "/api/recipes";
 let currentPage = 1;
 let currentLimit = 15;
 let totalPages = 1;
