@@ -106,13 +106,13 @@ Set your PostgreSQL connection using an environment variable.
 **Windows (PowerShell):**
 
 ```powershell
-$env:DATABASE_URL="postgresql://postgres:12345678@localhost:5432/fastapi_todo"
+$env:DATABASE_URL="postgresql://haleyxdb_user:7766DUXKC6DqeY9HKhWlCpe0XMiOaaQW@dpg-d50qa895pdvs73995q40-a.oregon-postgres.render.com/haleyxdb"
 ```
 
 **Mac / Linux:**
 
 ```bash
-export DATABASE_URL="postgresql://postgres:12345678@localhost:5432/fastapi_todo"
+export DATABASE_URL="postgresql://haleyxdb_user:7766DUXKC6DqeY9HKhWlCpe0XMiOaaQW@dpg-d50qa895pdvs73995q40-a.oregon-postgres.render.com/haleyxdb"
 ```
 
 ---
@@ -136,6 +136,9 @@ Data inserted.
 
 ```bash
 python -m uvicorn project.main:app --reload
+
+
+python insert_recepies.py && uvicorn project.main:app --host 0.0.0.0 --port 10000
 ```
 
 Server will start at:
